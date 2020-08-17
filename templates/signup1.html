@@ -1,0 +1,39 @@
+{% extends "layout1.html" %}
+
+{% block content %}
+    <div class="container">
+        <h1> Register Header </h1>
+        <p>&nbsp; <a href="/Doug">&nbsp;    Doug</a></p>
+    </div>
+
+
+    <div class="container">
+        <div class="content-section">
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.username.label }}<br>
+                    {{ form.username(size=10) }}
+                </p>
+                <p>
+                    {{ form.password.label }}<br>
+                    {{ form.password(size=10) }}
+                </p>
+                <p>
+                    {{ form.confirm.label }}<br>
+                    {{ form.confirm(size=10) }}
+                </p>
+                <p>
+                    {{ form.submit() }}
+                </p>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Already Have an Account? <a class="ml-2" href="{{ url_for('login') }}">Log In Now</a>
+        </small>
+    </div>
+{% endblock %}

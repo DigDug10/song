@@ -1,0 +1,28 @@
+{% extends "layout1.html" %}
+
+{% block content %}
+    <h1> Login Header </h1>
+    <a href="/Doug">Doug</a>
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            {% print(form.hidden_tag()) %}
+            <p>
+                {{ form.username.label }}<br>
+                {{ form.username(size=10) }}
+            </p>
+            <p>
+                {{ form.password.label }}<br>
+                {{ form.password(size=10) }}
+            </p>
+            <p>
+                {{ form.submit() }}
+            </p>
+        </form>
+    </div>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Need An Account? <a class="ml-2" href="{{ url_for('register') }}">Sign Up Now</a>
+        </small>
+    </div>
+{% endblock %}
