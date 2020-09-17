@@ -1,5 +1,4 @@
-{% extends "layout1.html" %}
-{% include 'header3.html' %}
+{% extends "layout6.html" %}
 
     {% block title %} {{ title }} {% endblock %}
 
@@ -72,10 +71,10 @@
 
                                                 <label>Category:</label>
                                                  <input type="hidden" name="id" value="{{song.id}}">
-                                                <select name="cat" id="select_cat" onchange="myFunction()">
-                                                    <option value="Song">Song</option>
-                                                    <option value="Stuck">Stuck in my head</option>
-                                                    <option value="Food">Food</option>
+                                                <select name="cat" id="cat">
+                                                    {% for category in category %}
+                                                    <option value="{{ category.cat }}">{{ category.cat_text }}</option>
+                                                    {% endfor %}
                                                 </select>
 
                                             </div>
@@ -103,6 +102,10 @@
 
                                             </div>
                                         </form>
+                                    </div>
+                                    <div>
+                                        {% set a = user.user %}
+                                        {% print a %}
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -168,6 +171,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div>
+            <h5>&emsp; Back to My Songs! : &emsp; <a href="{{ url_for('user_home') }}">Songs</a></h5>
         </div>
 
 

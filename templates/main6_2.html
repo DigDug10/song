@@ -1,5 +1,4 @@
-{% extends "layout1.html" %}
-{% include 'header3.html' %}
+{% extends "layout6.html" %}
 
     {% block title %} {{ title }} {% endblock %}
 
@@ -8,15 +7,16 @@
         <div class="row">
             <div class="col md-12">
                 <div class="jumbotron p-3">
-                    <h2>Manage <b>Songs </b></h2>
+                    <h2>Manage <b> Category {{ cat }} </b></h2>
                         <h6><label>Category:</label>
                         <select name="cat" id="select1" onchange="myFunction()">
-                            <option value="Song">Song</option>
-                            <option value="Stuck">Stuck in my head</option>
-                            <option value="Food">Food</option>
+                            <option value="none" selected disabled hidden></option>
+                            {% for category in category %}
+                            <option value="{{ category.cat }}">{{ category.cat_text }}</option>
+                            {% endfor %}
                         </select>
                         <button type="button" class="btn btn-success float-right"
-                    data-toggle="modal" data-target="#mymodal">Add New Songs</button></h6>
+                    data-toggle="modal" data-target="#mymodal">Add New {{cat}}</button></h6>
 
                     {% with messages = get_flashed_messages() %}
                     {% if messages %}
@@ -50,6 +50,7 @@
                         </tr>
 
                         {% for song in songs %}
+                        {% print(song.cat) %}
 
                         <tr>
 
@@ -79,9 +80,9 @@
                                                 <label>Category:</label>
                                                  <input type="hidden" name="id" value="{{song.id}}">
                                                 <select name="cat" id="cat">
-                                                    <option value="Song">Song</option>
-                                                    <option value="Stuck">Stuck in my head</option>
-                                                    <option value="Food">Food</option>
+                                                    {% for category in category %}
+                                                    <option value="{{ category.cat }}">{{ category.cat_text }}</option>
+                                                    {% endfor %}
                                                 </select>
 
                                             </div>
@@ -123,6 +124,15 @@
                     </table>
 
                 </div>
+                <div>
+                    <h5>&emsp;Manage your friends: &emsp; <a href="{{ url_for('friend') }}">Friends</a></h5>
+                </div>
+                <div>
+                    <h5>&emsp;See your friends songs:   <a href="{{ url_for('home') }}">Friends Songs</a></h5>
+                    <h5>&emsp;See your test songs:   <a href="{{ url_for('test') }}">Test Songs</a></h5>
+                </div>
+
+
             </div>
         </div>
 
@@ -140,9 +150,9 @@
 
                                 <label>Category:</label>
                                 <select name="cat">
-                                    <option value="Song">Song</option>
-                                    <option value="Stuck">Stuck in my head</option>
-                                    <option value="Food">Food</option>
+                                    {% for category in category %}
+                                    <option value="{{ category.cat }}">{{ category.cat_text }}</option>
+                                    {% endfor %}
                                 </select>
 
                             </div>

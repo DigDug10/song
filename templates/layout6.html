@@ -17,15 +17,14 @@
         {% block content %}{% endblock %}
     </div>
     <hr>
-    <h6> Yes </h6>
+    <h6> Yes 1</h6>
     <p id="demo"></p>
-
     <script>
     function myFunction(){
         x = document.getElementById("select1").value;
-        y = "http://127.0.0.1:5000/home"
-        document.getElementById("demo").innerHTML = y;
-        window.location.href = y;
+        y = "http://127.0.0.1:5000/user_home/" + x;
+        window.location = y;
+        document.getElementById("demo").innerHTML = y
     };
     </script>
 
